@@ -21,6 +21,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"marksman",
 				},
 				automatic_installation = true,
 			})
@@ -98,6 +99,7 @@ return {
 			local lspconfig = require("lspconfig")
 			local servers = {
 				"lua_ls",
+				"marksman",
 			}
 
 			for _, server in ipairs(servers) do
@@ -116,8 +118,9 @@ return {
 							},
 						},
 					}
+				elseif server == "marksman" then
+					server_settings = {}
 				end
-
 				lspconfig[server].setup({
 					capabilities = capabilities,
 					server_settings,
